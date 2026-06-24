@@ -1,9 +1,11 @@
 from pathlib import Path
 import environ
-
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+sys.path.append(str(BASE_DIR / 'apps'))
 
 env = environ.Env()
 
@@ -24,14 +26,24 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.usuarios.apps.UsuariosConfig',  
-    'apps.horarios.apps.HorariosConfig', 
+
+# 
+
+    'usuarios.apps.UsuariosConfig',  
+    'horarios.apps.HorariosConfig',
+    'cursos.apps.CursosConfig',
+    'frequencia.apps.FrequenciaConfig',
+    'comunicados.apps.ComunicadosConfig',
+    'log.apps.LogConfig',
+    'landing_page.apps.LandingPageConfig',
+    'portal_aluno.apps.PortalAlunoConfig',
 ]
 
 MIDDLEWARE = [
