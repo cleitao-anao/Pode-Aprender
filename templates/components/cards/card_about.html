@@ -1,0 +1,22 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/card.css' %}">
+
+
+
+{% comment %} 
+
+* atributos do card_about.html
+
+* cor
+* icone
+* titulo
+* descricao
+
+{% endcomment %}
+
+
+<div class="card about-card">
+    <div class="card-icon {{ cor|default:'blue-bg' }}"><i class="{{ icone|default:'fa-regular fa-flag' }}"></i></div>
+    <h3>{{ titulo|default:'Missão' }}</h3>
+    <p>{{ descricao|default:'Democratizar o acesso ao ensino de tecnologia, promovendo a autonomia financeira e intelectual das comunidades.' }}</p>
+</div>

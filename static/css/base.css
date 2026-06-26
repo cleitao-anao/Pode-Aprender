@@ -1,0 +1,39 @@
+:root {
+    --primary-blue: #254EDB;
+    --light-blue: #E9EEFA;
+    --text-dark: #1E1E1E;
+    --text-gray: #666666;
+    --bg-light: #F8F9FA;
+    --white: #FFFFFF;
+    --footer: #E2E1EE;
+    --yellow: #F5B027;
+    --light-yellow: #FEF7E9;
+    --red-light: #FAEAEC;
+    --border-color: #EAEAEA;
+}
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    line-height: 1.6;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}

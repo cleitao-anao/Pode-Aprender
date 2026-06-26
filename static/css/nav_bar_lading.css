@@ -1,0 +1,45 @@
+.header {
+    background-color: var(--white);
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header-content {
+    display: flex;
+    height: 80px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    font-size: 15px;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: var(--primary-blue);
+}
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.login-link {
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+        .nav-links, .auth-buttons {
+        display: none; /* Menu sanduíche seria necessário aqui */
+    }
+}

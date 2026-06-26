@@ -1,0 +1,141 @@
+/* Botões */
+.btn {
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #1a3ab3;
+}
+
+.btn-outline {
+    background-color: var(--light-blue);
+    color: var(--primary-blue);
+    width: 100%;
+    font-weight: 600;
+}
+
+.btn-outline:hover {
+    background-color: #d1dcfa;
+}
+
+/* Header */
+
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0.1)), 
+                url('https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.hero-content {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.hero-content h1 {
+    font-size: 32px;
+    color: var(--primary-blue);
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    color: var(--text-gray);
+    font-size: 16px;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.carousel-indicators span {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    display: block;
+}
+
+.carousel-indicators span.active {
+    background-color: var(--primary-blue);
+    border: 2px solid white;
+}
+
+/* Stats Section */
+.stats {
+    background-color: var(--bg-light);
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.stats-grid {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.stat-item h3 {
+    font-size: 32px;
+    color: var(--primary-blue);
+    margin-bottom: 5px;
+}
+
+.stat-item h3.yellow { color: var(--yellow); }
+.stat-item h3.blue { color: var(--primary-blue); }
+
+.stat-item p {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-gray);
+    letter-spacing: 1px;
+}
+
+
+
+
+/* Responsividade Básica */
+@media (max-width: 992px) {
+    .courses-grid, .about-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 768px) {
+    .nav-links, .auth-buttons {
+        display: none; /* Menu sanduíche seria necessário aqui */
+    }
+    .stats-grid {
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-around;
+    }
+    .courses-grid, .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+}

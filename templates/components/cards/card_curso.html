@@ -1,0 +1,20 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/card.css' %}">
+
+
+    <div class="card course-card">
+
+        <span class="badge">{{ nivel }}</span>
+
+        <div class="card-icon {{ cor }}"><i class="{{ icone }}"></i></div>
+
+        <h3>{{ titulo }}</h3>
+        <p>{{ descricao }}</p>
+
+
+        <div class="course-meta">
+            <span><i class="fa-regular fa-clock"></i> {{ carga_horaria }}</span>
+            <span><i class="fa-regular fa-user"></i>{{ vagas }}</span>
+        </div>
+        <a href="#" class="btn btn-outline">Saiba Mais</a>
+    </div>

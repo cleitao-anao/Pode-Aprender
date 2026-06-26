@@ -1,0 +1,34 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/footer_lading.css' %}">
+
+<footer class="footer">
+    <div class="container footer-grid">
+        <div class="footer-brand">
+
+            {% include "components/logos/logo.html" %}
+
+            <p>Uma iniciativa da Comunidade Pode Crer focada em capacitação tecnológica e inclusão social através da educação gratuita de qualidade.</p>
+        </div>
+        
+        <div class="footer-links">
+            <h4>Plataforma</h4>
+            <a href="#">Cursos</a>
+            <a href="#">Sobre Nós</a>
+            <a href="#">Portal do Aluno</a>
+        </div>
+
+        <div class="footer-contact">
+            <h4>Contato</h4>
+            <p><i class="fa-regular fa-envelope"></i> contato@podeaprender.org</p>
+            <p><i class="fa-solid fa-location-dot"></i> Ananideua, PA</p>
+        </div>
+    </div>
+    <div class="container footer-bottom">
+        <p>&copy; 2026 Comunidade Pode Crer. Todos os direitos reservados.</p>
+        <div class="social-icons">
+            <i class="fa-solid fa-globe"></i>
+            <i class="fa-solid fa-share-nodes"></i>
+        </div>
+    </div>
+</footer>
