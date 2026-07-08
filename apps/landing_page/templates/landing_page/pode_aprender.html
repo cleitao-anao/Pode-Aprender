@@ -16,18 +16,29 @@
 {% include "navbar_lading.html" %}
 
     <section class="hero">
+        <div class="hero-bg-slides">
+            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <button class="hero-arrow hero-arrow-prev" aria-label="Slide anterior">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="hero-arrow hero-arrow-next" aria-label="Próximo slide">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
         <div class="container hero-container">
-            <div class="hero-content">
-                <h1>Transformando vidas através da tecnologia</h1>
-                <p>Cursos gratuitos de informática para a comunidade de Marituba e Ananindeua, PA. Junte-se a nós para construir um futuro digital mais inclusivo.</p>
-            </div>
             <div class="carousel-indicators">
-                <span class="active"></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
+                <span class="active" data-slide="0"></span>
+                <span data-slide="1"></span>
+                <span data-slide="2"></span>
+                <span data-slide="3"></span>
+                <span data-slide="4"></span>
+                <span data-slide="5"></span>
             </div>
         </div>
     </section>
@@ -101,5 +112,7 @@
     </section>
 
     {% include "footer_lading.html" %}
+
+    <script src="{% static 'landing_page/js/pode_aprender.js' %}"></script>
 
 {% endblock body %}
