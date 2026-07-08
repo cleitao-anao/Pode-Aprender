@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}Pode Aprender{% endblock %}
+
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'portal_aluno/css/login_aluno.css' %}">
+
+{% endblock extra_css %}
+
+
+
+{% block body %}
+
+
+
+<body>
+
+    <div class="login-card">
+        <div class="logo-container">
+            {% include "components/logos/logo.html" %}
+            <h1>Pode Crer</h1>
+            <p class="subtitle">Portal do Aluno</p>
+        </div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <div class="input-wrapper">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" id="email" placeholder="Digite seu e-mail" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="password" placeholder="Digite sua senha" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Entrar</button>
+        </form>
+
+        <a href="#" class="forgot-password" id="forgotPass">Esqueci minha senha</a>
+    </div>
+
+
+    
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+           
+            event.preventDefault(); 
+            
+            // valor digitado captura
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // validaçao simulada
+            if (email === "aluno@podecrer.com" && password === "123456") {
+                alert("Login realizado com sucesso! Bem-vindo ao Portal do Aluno.");
+                // direcionar usuario (simulaçao para teste que to fazendo)
+            } else {
+                alert("E-mail ou senha incorretos. Tente novamente.");
+            }
+        });
+
+        // Clique no Esqueci minha senha
+        document.getElementById('forgotPass').addEventListener('click', function(event) {
+            event.preventDefault();
+            alert("Um link de recuperação foi enviado para o seu e-mail cadastrado.");
+        });
+    </script>
+
+
+{% endblock body %}
