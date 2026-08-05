@@ -1,9 +1,10 @@
 /* Cards Base */
 .card {
     background-color: var(--white);
+    min-height: 1000px;
     border-radius: 12px;
     padding: 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    box-shadow: 0 4px 15px rgba(151, 20, 20, 0.03);
     border: 1px solid var(--border-color);
 }
 
@@ -68,11 +69,7 @@
 }
 
 
-/* Course Card Details */
-.course-card {
-    position: relative;
-    padding-top: 10px;
-}
+
 
 .badge {
     position: relative;
@@ -86,17 +83,6 @@
     border: 1px solid var(--border-color);
 }
 
-.course-card h3 {
-    font-size: 18px;
-    margin-bottom: 12px;
-}
-
-.course-card p {
-    color: var(--text-gray);
-    font-size: 14px;
-    margin-bottom: 20px;
-    min-height: 42px;
-}
 
 .course-meta {
     display: flex;

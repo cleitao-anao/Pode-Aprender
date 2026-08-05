@@ -75,16 +75,15 @@
             </div>
 
            <div class="courses-grid">
+            
+            {% include "components/cards/card_curso.html" with cor='blue-bg' icone='fa-solid fa-terminal' carga_horaria='40h' nivel='Iniciante' titulo='Introdução à Programação' descricao='Lógica de programação, algoritmos e os primeiros passos no mundo do código...' horas='40h' vagas='25' %}
 
-            {% include "components/cards/card_curso.html" with cor='blue-bg' icone='fa-solid fa-terminal' titulo='Introdução à Programação' descricao='Lógica de programação, algoritmos e os primeiros passos no mundo do código...' horas='40h' vagas='25' %}
+            {% include "components/cards/card_curso.html" with cor='yellow-bg' icone='fa-solid fa-pen-nib' carga_horaria='80h' nivel='Intermediário' titulo='Design de Interfaces (UI/UX)' descricao='Aprenda a criar interfaces modernas e funcionais utilizando Figma e princípios de...' horas='80h' vagas='20' %}
 
-            {% include "components/cards/card_curso.html" with cor='yellow-bg' icone='fa-solid fa-pen-nib' titulo='Design de Interfaces (UI/UX)' descricao='Aprenda a criar interfaces modernas e funcionais utilizando Figma e princípios de...' horas='80h' vagas='20' %}
+            {% include "components/cards/card_curso.html" with cor='blue-bg' icone='fa-solid fa-desktop' carga_horaria='100h' nivel='Avançado' titulo='Desenvolvimento Web Front-end' descricao='Construa sites responsivos e interativos com HTML, CSS, JavaScript e React básico.' horas='100h' vagas='20' %}
 
-            {% include "components/cards/card_curso.html" with cor='blue-bg' icone='fa-solid fa-desktop' titulo='Desenvolvimento Web Front-end' descricao='Construa sites responsivos e interativos com HTML, CSS, JavaScript e React básico.' horas='100h' vagas='20' %}
-
-
-                
-
+           </div>     
+    
         </div>
     </section>
 
