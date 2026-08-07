@@ -1,0 +1,220 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Grade Horária{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'portal_aluno/css/painel_aluno.css' %}">
+{% endblock extra_css %}
+
+{% block body %}
+<div class="portal-page">
+    {% include 'portal_aluno/includes/sidebar.html' %}
+
+    <main class="main-content">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button type="button" class="sidebar-toggle" aria-label="Abrir menu">☰</button>
+                <div class="topbar-tabs">
+                    <a href="{% url 'portal_aluno:painel' %}" class="topbar-tab">Dashboard</a>
+                    <a href="#" class="topbar-tab active">Grade Horária</a>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <button class="topbar-icon" type="button"><i class="fa-regular fa-bell"></i></button>
+                <button class="topbar-icon" type="button"><i class="fa-regular fa-circle-question"></i></button>
+                <div class="user-badge" onclick="window.location.href='{% url 'portal_aluno:perfil' %}'" style="cursor:pointer;">
+                    <img src="{{ profile.photo_url }}" alt="Perfil">
+                </div>
+            </div>
+        </header>
+
+        <section class="grade-section">
+            <div class="section-header">
+                <div>
+                    <h1>Minha Grade Horária</h1>
+                    <p>Confira sua semana com horários, locais e professores em um design limpo e moderno.</p>
+                </div>
+                <div class="grade-actions">
+                    <button type="button" class="secondary-button">← Semana anterior</button>
+                    <button type="button" class="secondary-button">Próxima semana →</button>
+                    
+                    <!-- Botão de Exportar Animado Integrado -->
+                    <div class="export-btn-container">
+                        <label class="label">
+                            <input type="checkbox" class="input" />
+                            <span class="circle">
+                                <svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 19V5m0 14-4-4m4 4 4-4"></path>
+                                </svg>
+                                <div class="square"></div>
+                            </span>
+                            <p class="title">Exportar</p>
+                            <p class="title">Pronto</p>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grade-toolbar schedule-topbar">
+                <div>
+                    <span class="page-label">14 – 18 Agosto, 2023</span>
+                </div>
+                <div class="schedule-filter-group">
+                    <label class="filter-label">Todos os cursos</label>
+                    <select class="filter-select">
+                        <option>Todos os Cursos</option>
+                        <option>Design Digital A</option>
+                        <option>Programação Web</option>
+                        <option>Turma A</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="schedule-board">
+                <div class="schedule-row schedule-header-row">
+                    <div class="schedule-time-cell"></div>
+                    <div class="schedule-day-cell">Seg</div>
+                    <div class="schedule-day-cell">Ter</div>
+                    <div class="schedule-day-cell">Qua</div>
+                    <div class="schedule-day-cell">Qui</div>
+                    <div class="schedule-day-cell">Sex</div>
+                </div>
+
+                <div class="schedule-row">
+                    <div class="schedule-time-cell">08:00</div>
+                    <div class="schedule-cell empty-cell"></div>
+                    <div class="schedule-cell event-card blue-card">
+                        <strong>Lógica de Programação</strong>
+                        <span>08:00 - 09:40</span>
+                        <span>Prof. Carlos · Sala 404</span>
+                    </div>
+                    <div class="schedule-cell empty-cell"></div>
+                    <div class="schedule-cell event-card orange-card">
+                        <strong>Banco de Dados I</strong>
+                        <span>08:00 - 09:40</span>
+                        <span>Profa. Mariana · Lab 1</span>
+                    </div>
+                    <div class="schedule-cell empty-cell"></div>
+                </div>
+
+                <div class="schedule-row">
+                    <div class="schedule-time-cell">10:00</div>
+                    <div class="schedule-cell event-card green-card">
+                        <strong>Banco de Dados I</strong>
+                        <span>10:00 - 11:40</span>
+                        <span>Profa. Mariana · Lab 1</span>
+                    </div>
+                    <div class="schedule-cell event-card red-card">
+                        <strong>Engenharia de Software</strong>
+                        <span>10:00 - 11:40</span>
+                        <span>Dr. Roberto · Sala 304</span>
+                    </div>
+                    <div class="schedule-cell empty-cell"></div>
+                    <div class="schedule-cell empty-cell"></div>
+                    <div class="schedule-cell empty-cell"></div>
+                </div>
+
+                <div class="schedule-row">
+                    <div class="schedule-time-cell">12:00</div>
+                    <div class="schedule-cell empty-cell"></div>
+                    <div class="schedule-cell empty-cell"></div>
+                    <div class="schedule-cell event-card purple-card">
+                        <strong>Redes de Computadores</strong>
+                        <span>10:00 - 11:40</span>
+                        <span>Prof. Almeida · Lab 3</span>
+                    </div>
+                    <div class="schedule-cell empty-cell"></div>
+                    <div class="schedule-cell empty-cell"></div>
+                </div>
+
+                <div class="schedule-row">
+                    <div class="schedule-time-cell">14:00</div>
+                    <div class="schedule-cell empty-cell"></div>
+                    <div class="schedule-cell event-card gray-card">
+                        <strong>Mentoria (Optativa)</strong>
+                        <span>14:00 - 15:30</span>
+                        <span>Online</span>
+                    </div>
+                    <div class="schedule-cell empty-cell"></div>
+                    <div class="schedule-cell empty-cell"></div>
+                    <div class="schedule-cell empty-cell"></div>
+                </div>
+
+                <div class="schedule-row">
+                    <div class="schedule-time-cell">16:00</div>
+                    <div class="schedule-cell empty-cell"></div>
+                    <div class="schedule-cell empty-cell"></div>
+                    <div class="schedule-cell empty-cell"></div>
+                    <div class="schedule-cell empty-cell"></div>
+                    <div class="schedule-cell event-card dark-card">
+                        <strong>Seminários Tecnológicos</strong>
+                        <span>16:00 - 18:00</span>
+                        <span>Auditório Principal</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grade-details">
+                <div class="upcoming-classes">
+                    <header class="section-header">
+                        <div>
+                            <h2>Visão rápida</h2>
+                            <p>Resumo dos principais horários e atividades da semana.</p>
+                        </div>
+                    </header>
+                    <div class="classes-list">
+                        <article class="class-card">
+                            <div class="date-box"><strong>Ter</strong><span>15</span></div>
+                            <div>
+                                <strong>Engenharia de Software</strong>
+                                <span>10:00 - 11:40 · Sala 304</span>
+                            </div>
+                        </article>
+                        <article class="class-card">
+                            <div class="date-box"><strong>Qua</strong><span>16</span></div>
+                            <div>
+                                <strong>Redes de Computadores</strong>
+                                <span>10:00 - 11:40 · Lab 3</span>
+                            </div>
+                        </article>
+                        <article class="class-card">
+                            <div class="date-box"><strong>Sex</strong><span>18</span></div>
+                            <div>
+                                <strong>Seminários Tecnológicos</strong>
+                                <span>16:00 - 18:00 · Auditório Principal</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="grade-notes card">
+                    <div class="card-title">Detalhes da semana</div>
+                    <p>Cada bloco da grade representa uma aula com horário, professor e local. Use o filtro para escolher o conjunto de cursos desejado.</p>
+                    <ul>
+                        <li><strong>Design:</strong> cores distintas para cada atividade.</li>
+                        <li><strong>Exportar:</strong> baixa a grade como PDF.</li>
+                        <li><strong>Seminários:</strong> destaque no fim do dia para atividades especiais.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script>
+    const sidebar = document.querySelector('.sidebar');
+    const toggleButton = document.querySelector('.sidebar-toggle');
+    const overlay = document.querySelector('.sidebar-overlay');
+
+    if (toggleButton && sidebar && overlay) {
+        toggleButton.addEventListener('click', () => {
+            sidebar.classList.toggle('sidebar-open');
+        });
+
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('sidebar-open');
+        });
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Configurar Perfil{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'portal_aluno/css/painel_aluno.css' %}">
+{% endblock extra_css %}
+
+{% block body %}
+<div class="portal-page">
+    {% include 'portal_aluno/includes/sidebar.html' %}
+
+    <main class="main-content">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button type="button" class="sidebar-toggle" aria-label="Abrir menu">☰</button>
+                <div class="topbar-tabs">
+                    <a href="{% url 'portal_aluno:perfil' %}" class="topbar-tab active">Editar Perfil</a>
+                </div>
+            </div>
+        </header>
+
+        <section class="profile-section">
+            <div class="profile-grid">
+                <div class="profile-card profile-photo-card">
+                    <div class="profile-avatar-shell">
+                        <div class="profile-avatar-ring"></div>
+                        <img src="{{ profile.photo_url }}" alt="Foto de perfil" class="profile-avatar" />
+                    </div>
+
+                    <div class="profile-info-card">
+                        <h2>{{ profile.name }}</h2>
+                        <p>{{ profile.bio }}</p>
+                        <span><strong>E-mail:</strong> {{ profile.email }}</span>
+                        <span><strong>Curso:</strong> {{ profile.course }}</span>
+                    </div>
+                </div>
+
+                <div class="profile-card profile-form-card">
+                    {% if message %}
+                        <div class="success-box">{{ message }}</div>
+                    {% endif %}
+                    <h2>Configurar Perfil</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        <label>Nome</label>
+                        <input type="text" name="name" value="{{ profile.name }}" />
+                        <label>E-mail</label>
+                        <input type="email" name="email" value="{{ profile.email }}" />
+                        <label>Curso</label>
+                        <input type="text" name="course" value="{{ profile.course }}" />
+                        <label>Bio</label>
+                        <textarea name="bio">{{ profile.bio }}</textarea>
+                        <button type="submit" class="sidebar-button">Salvar perfil</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script>
+    const sidebar = document.querySelector('.sidebar');
+    const toggleButton = document.querySelector('.sidebar-toggle');
+    const overlay = document.querySelector('.sidebar-overlay');
+
+    if (toggleButton && sidebar && overlay) {
+        toggleButton.addEventListener('click', () => {
+            sidebar.classList.toggle('sidebar-open');
+        });
+
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('sidebar-open');
+        });
+    }
+</script>
+{% endblock %}

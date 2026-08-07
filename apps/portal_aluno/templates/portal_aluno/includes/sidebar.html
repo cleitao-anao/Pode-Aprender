@@ -1,0 +1,22 @@
+<aside class="sidebar">
+    <div class="brand">
+        {% include "components/logos/logo.html" %}
+    </div>
+
+    <nav class="menu">
+        <a href="{% url 'portal_aluno:painel' %}" class="menu-item {% if current == 'painel' %}active{% endif %}">Início</a>
+        <a href="#" class="menu-item">Alunos</a>
+        <a href="#" class="menu-item">Equipe</a>
+        <a href="#" class="menu-item">Cursos e Turmas</a>
+        <a href="{% url 'portal_aluno:grade_horario' %}" class="menu-item {% if current == 'grade_horario' %}active{% endif %}">Grade Horária</a>
+        <a href="#" class="menu-item">Frequência</a>
+        <a href="#" class="menu-item">Comunicados</a>
+        <a href="{% url 'portal_aluno:perfil' %}" class="menu-item {% if current == 'perfil' %}active{% endif %}">Configurações</a>
+    </nav>
+
+    <footer class="sidebar-footer">
+        <button type="button" class="sidebar-button" onclick="window.location.href='{% url 'portal_aluno:perfil' %}'">Perfil</button>
+        <button type="button" class="sidebar-button" onclick="window.location.href='{% url 'portal_aluno:logout' %}'">Sair</button>
+    </footer>
+</aside>
+<div class="sidebar-overlay"></div>
