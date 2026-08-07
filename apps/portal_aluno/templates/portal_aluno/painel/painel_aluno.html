@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Painel do Aluno{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'portal_aluno/css/painel_aluno.css' %}">
+{% endblock extra_css %}
+
+{% block body %}
+    <div class="portal-page">
+        {% include 'portal_aluno/includes/sidebar.html' %}
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button type="button" class="sidebar-toggle" aria-label="Abrir menu">☰</button>
+                    <div class="topbar-tabs">
+                        <a href="{% url 'portal_aluno:painel' %}" class="topbar-tab active">inicio</a>
+                        <a href="#" class="topbar-tab">Registros</a>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <button class="topbar-icon"><i class="fa-regular fa-bell"></i></button>
+                    <button class="topbar-icon"><i class="fa-regular fa-circle-question"></i></button>
+                    <div class="user-badge" onclick="window.location.href='{% url 'portal_aluno:perfil' %}'" style="cursor:pointer;">
+                        <img src="{{ profile.photo_url }}" alt="Perfil">
+                    </div>
+                </div>
+            </header>
+
+            <section class="dashboard-welcome">
+                <div>
+                    <h1>Olá, {{ profile.name }} 👋</h1>
+                    <p>Aqui está o seu progresso e suas próximas atividades</p>
+                </div>
+                <div class="dashboard-metrics">
+                    <div class="metric-card">
+                        <strong>3</strong>
+                        <span>Cursos Ativos</span>
+                    </div>
+                    <div class="metric-card">
+                        <strong>4</strong>
+                        <span>Próximas Aulas</span>
+                    </div>
+                    <div class="metric-card">
+                        <strong>2</strong>
+                        <span>Certificados</span>
+                    </div>
+                    <div class="metric-card">
+                        <strong>88%</strong>
+                        <span>Frequência</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dashboard-cards">
+                <div class="card progress-card">
+                    <div class="card-title">Progresso Geral</div>
+                    <div class="progress-value">75%</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                    <p>Conclusão acadêmica estimada</p>
+                </div>
+                <div class="card next-class-card">
+                    <div class="card-title">Próxima Aula</div>
+                    <strong>Design Digital A</strong>
+                    <span>Hoje, 14:00</span>
+                    <span>Sala 302 - Bloco B</span>
+                </div>
+            </section>
+
+            <section class="upcoming-classes">
+                <header class="section-header">
+                    <h2>Próximas aulas da semana</h2>
+                    <a href="#" class="link-button">Ver calendário completo</a>
+                </header>
+                <div class="classes-list">
+                    <article class="class-card">
+                        <div class="date-box"><strong>Qua</strong><span>14</span></div>
+                        <div>
+                            <strong>Design Digital A</strong>
+                            <span>14:00 - 16:00</span>
+                        </div>
+                    </article>
+                    <article class="class-card">
+                        <div class="date-box"><strong>Qui</strong><span>15</span></div>
+                        <div>
+                            <strong>Programação Web</strong>
+                            <span>09:00 - 11:30</span>
+                        </div>
+                    </article>
+                    <article class="class-card">
+                        <div class="date-box"><strong>Sex</strong><span>16</span></div>
+                        <div>
+                            <strong>Lógica Básica</strong>
+                            <span>14:00 - 15:30</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const sidebar = document.querySelector('.sidebar');
+        const toggleButton = document.querySelector('.sidebar-toggle');
+        const overlay = document.querySelector('.sidebar-overlay');
+
+        if (toggleButton && sidebar && overlay) {
+            toggleButton.addEventListener('click', () => {
+                sidebar.classList.toggle('sidebar-open');
+            });
+
+            overlay.addEventListener('click', () => {
+                sidebar.classList.remove('sidebar-open');
+            });
+        }
+    </script>
+{% endblock %}
