@@ -16,7 +16,8 @@
 }
 
 .btn-primary:hover {
-    background-color: var(--primary-blue-dark);
+    /* Não altera a cor base do botão ao passar o mouse (permanece azul) */
+    background-color: var(--primary-blue);
 }
 
 .btn-outline {
@@ -95,6 +96,19 @@
 
 .hero-arrow:hover {
     background-color: rgba(255, 255, 255, 0.45);
+}
+
+/* Seta dentro do controle do carrossel: por padrão amarela, ao hover branca */
+.hero-arrow i,
+.hero-arrow .fa-chevron-left,
+.hero-arrow .fa-chevron-right {
+    color: var(--yellow);
+}
+
+.hero-arrow:hover i,
+.hero-arrow:hover .fa-chevron-left,
+.hero-arrow:hover .fa-chevron-right {
+    color: var(--white);
 }
 
 .hero-arrow-prev {
