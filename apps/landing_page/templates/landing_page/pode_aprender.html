@@ -64,51 +64,48 @@
         </div>
     </section>
 
+    <div class="quebra-pagina">
+        <div class="bolas">
+            <div class="bola"></div>
+            <div class="bola"></div>
+        </div>
+    </div>
+
     <section class="courses">
         <div class="container">
             <div class="section-header">
-                <div>
+    
                     <h2>Cursos Disponíveis</h2>
                     <p>Formações práticas desenhadas para o mercado atual.</p>
-                </div>
-                <a href="#" class="view-all">Ver todos <i class="fa-solid fa-arrow-right"></i></a>
+  
             </div>
-
-           <div class="courses-grid">
-            
-            {% include "components/cards/card_curso.html" with cor='blue-bg' icone='fa-solid fa-terminal' carga_horaria='40h' nivel='Iniciante' titulo='Introdução à Programação' descricao='Lógica de programação, algoritmos e os primeiros passos no mundo do código...' horas='40h' vagas='25' %}
-
-            {% include "components/cards/card_curso.html" with cor='yellow-bg' icone='fa-solid fa-pen-nib' carga_horaria='80h' nivel='Intermediário' titulo='Design de Interfaces (UI/UX)' descricao='Aprenda a criar interfaces modernas e funcionais utilizando Figma e princípios de...' horas='80h' vagas='20' %}
-
-            {% include "components/cards/card_curso.html" with cor='blue-bg' icone='fa-solid fa-desktop' carga_horaria='100h' nivel='Avançado' titulo='Desenvolvimento Web Front-end' descricao='Construa sites responsivos e interativos com HTML, CSS, JavaScript e React básico.' horas='100h' vagas='20' %}
-
-           </div>     
-    
         </div>
-    </section>
 
-    <section class="about">
-        <div class="container">
-            <div class="section-header center">
-                <h2>Quem Somos</h2>
-                <p>A Comunidade Pode Crer é um movimento focado em inclusão social e capacitação tecnológica, conectando talentos periféricos às oportunidades da economia digital.</p>
-            </div>
+        <div class="carousel-wrapper">
+            <button class="nav-btn prev" id="btn-prev" aria-label="Voltar">&#10094;</button>
 
-            <div class="about-grid">
+            <div class="carousel-track" id="track">
+                
+                {% include "components/cards/card_curso.html" with cor='blue-bg' icone='fa-solid fa-terminal' carga_horaria='40h' nivel='Iniciante' titulo='Introdução à Programação' descricao='Lógica de programação, algoritmos e os primeiros passos no mundo do código...' horas='40h' vagas='25' %}
 
-                {% include "components/cards/card_about.html" with cor='blue-bg' icone='fa-regular fa-flag' titulo='Missão' descricao='Democratizar o acesso ao ensino de tecnologia, promovendo a autonomia financeira e intelectual das comunidades.' %}
+                {% include "components/cards/card_curso.html" with cor='yellow-bg' icone='fa-solid fa-pen-nib' carga_horaria='80h' nivel='Intermediário' titulo='Design de Interfaces (UI/UX)' descricao='Aprenda a criar interfaces modernas e funcionais utilizando Figma e princípios de...' horas='80h' vagas='20' %}
+
+                {% include "components/cards/card_curso.html" with cor='blue-bg' icone='fa-solid fa-desktop' carga_horaria='100h' nivel='Avançado' titulo='Desenvolvimento Web Front-end' descricao='Construa sites responsivos e interativos com HTML, CSS, JavaScript e React básico.' horas='100h' vagas='20' %}
                 
+                {% include "components/cards/card_curso.html" with cor='blue-bg' icone='fa-solid fa-desktop' carga_horaria='100h' nivel='Avançado' titulo='Desenvolvimento Web Front-end' descricao='Construa sites responsivos e interativos com HTML, CSS, JavaScript e React básico.' horas='100h' vagas='20' %}
                 
-                {% include "components/cards/card_about.html" with cor='yellow-bg' icone='fa-regular fa-eye' titulo='Visão' descricao='Ser referência nacional na formação de talentos tecnológicos oriundos de áreas de vulnerabilidade social.' %}
-                
-                {% include "components/cards/card_about.html" with cor='red-bg' icone='fa-regular fa-heart' titulo='Valores' descricao='Inclusão, excelência técnica, colaboração em rede, empatia e protagonismo comunitário.' %}
-                
+                {% include "components/cards/card_curso.html" with cor='blue-bg' icone='fa-solid fa-desktop' carga_horaria='100h' nivel='Avançado' titulo='Desenvolvimento Web Front-end' descricao='Construa sites responsivos e interativos com HTML, CSS, JavaScript e React básico.' horas='100h' vagas='20' %}
           
-
-                
-            </div>
+            </div>     
+            <button class="nav-btn next" id="btn-next" aria-label="Avançar">&#10095;</button>
+        </div>
+        <div class="d-flex justify-content-center align-items-start gap-2">
+            <a class="fw-bold text-primary d-flex justify-content-center align-items-center flex-row gap-1" href="/">Ver todos<i class="fa-solid fa-arrow-right"></i></a> <!-- ! colocar pra onde ir-->
+            
         </div>
     </section>
+
+
 
     {% include "footer_lading.html" %}
 

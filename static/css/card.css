@@ -28,29 +28,7 @@
     padding: 80px 0;
 }
 
-.section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 40px;
-}
 
-.section-header.center {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto 40px auto;
-}
-
-.section-header h2 {
-    font-size: 28px;
-    margin-bottom: 8px;
-}
-
-.section-header p {
-    color: var(--text-gray);
-}
 
 .view-all {
     color: var(--primary-blue);
@@ -112,6 +90,7 @@
 }
 
 @media (max-width: 768px) {
+    .card { width: 240px; }
     .nav-links, .auth-buttons {
         display: none; /* Menu sanduíche seria necessário aqui */
     }
