@@ -1,0 +1,72 @@
+{% load static %}
+
+<style>
+    .quebra-pagina {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0px;
+        margin: 70px 0 70px 0;
+
+        position: relative;
+        width: 100%;
+        height: 70px;
+        overflow: hidden;
+    }
+
+    .bolas-container {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
+    }
+
+    .bolas {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0px;
+        gap: 5px;
+        min-width: 65px;
+        height: 100%;
+        flex-shrink: 0;
+    }
+
+    .bola {
+        width: 8px;
+        height: 8px;
+        border-radius: 100%;
+        background: #162D9D;
+    }
+</style>
+
+
+<div class="quebra-pagina">
+    <div class="bolas-container" id="bolas-container">
+    </div>
+</div>
+
+<script>
+(function() {
+    const container = document.getElementById('bolas-container');
+    if (!container) return;
+
+    function preencherBolas() {
+        container.innerHTML = '';
+        const larguraTotal = window.innerWidth;
+        const larguraBola = 65;
+        const quantidade = Math.ceil(larguraTotal / larguraBola);
+
+        for (let i = 0; i < quantidade; i++) {
+            const bolas = document.createElement('div');
+            bolas.className = 'bolas';
+            bolas.innerHTML = '<div class="bola"></div><div class="bola"></div>';
+            container.appendChild(bolas);
+        }
+    }
+
+    preencherBolas();
+    window.addEventListener('resize', preencherBolas);
+})();
+</script>
