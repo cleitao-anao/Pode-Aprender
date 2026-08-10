@@ -28,10 +28,14 @@
         </div>
 
         {% if error_message %}
-            <div class="error-box">{{ error_message }}</div>
+            <div id="loginError" class="error-box">
+                {{ error_message }}
+            </div>
+        {% else %}
+            <div id="loginError" class="error-box" style="display: none;"></div>
         {% endif %}
 
-        <form method="post">
+        <form id="portalLoginForm" method="post">
             {% csrf_token %}
             <div class="form-group">
                 <div class="input-wrapper form-control">
@@ -68,6 +72,78 @@
     </div>
 
     <script>
+        const form = document.getElementById('portalLoginForm');
+        const errorBox = document.getElementById('loginError');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+
+        function showError(message) {
+            errorBox.textContent = message;
+            errorBox.style.display = 'block';
+        }
+
+        function hideError() {
+            errorBox.textContent = '';
+            errorBox.style.display = 'none';
+        }
+
+        function getCsrfToken() {
+            const tokenInput = form.querySelector('[name=csrfmiddlewaretoken]');
+            return tokenInput ? tokenInput.value : '';
+        }
+
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            hideError();
+
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+
+            if (!email || !password) {
+                showError('Por favor, preencha o e-mail e a senha.');
+                return;
+            }
+
+            if (!isValidEmail(email)) {
+                showError('Por favor, informe um e-mail válido.');
+                return;
+            }
+
+            const submitButton = form.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.setAttribute('aria-busy', 'true');
+
+            try {
+                const response = await fetch(form.action || window.location.pathname, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCsrfToken(),
+                        'Accept': 'application/json',
+                    },
+                    credentials: 'same-origin',
+                    body: JSON.stringify({ email, password }),
+                });
+
+                const data = await response.json();
+                if (response.ok && data.success) {
+                    window.location.href = data.redirect || '{% url "portal_aluno:painel" %}';
+                    return;
+                }
+
+                showError(data.error || 'Usuário ou senha inválidos.');
+            } catch (error) {
+                showError('Erro de rede. Tente novamente.');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.removeAttribute('aria-busy');
+            }
+        });
+
         document.getElementById('forgotPass').addEventListener('click', function(event) {
             event.preventDefault();
             alert("Um link de recuperação foi enviado para o seu e-mail cadastrado.");

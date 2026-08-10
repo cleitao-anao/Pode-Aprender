@@ -147,3 +147,14 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Segurança de cookies de sessão
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SECURE = env.bool('SESSION_COOKIE_SECURE', default=not DEBUG)
+SESSION_COOKIE_SAMESITE = 'Strict'
+CSRF_COOKIE_SECURE = env.bool('CSRF_COOKIE_SECURE', default=not DEBUG)
+CSRF_COOKIE_SAMESITE = 'Strict'
+
+# Cabeçalhos adicionais de segurança
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
