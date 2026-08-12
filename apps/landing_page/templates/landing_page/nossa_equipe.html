@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Nossa Equipe | Pode Aprender{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'landing_page/css/nossa_equipe.css' %}">{% endblock %}
+
+{% block body %}
+{% include "navbar_lading.html" with active_page="equipe" %}
+<main class="team-page">
+    <div class="team-container">
+        <h1>Nossa equipe</h1>
+        <section class="team-gallery" aria-label="Integrantes da equipe Pode Aprender">
+            <figure class="team-photo team-photo-one">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=85" alt="Integrante da equipe Pode Aprender">
+            </figure>
+            <figure class="team-photo team-photo-two">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=700&q=85" alt="Integrante da equipe Pode Aprender">
+            </figure>
+            <figure class="team-photo team-photo-three">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=85" alt="Integrante da equipe Pode Aprender">
+            </figure>
+            <figure class="team-photo team-photo-four">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=85" alt="Integrante da equipe Pode Aprender">
+            </figure>
+        </section>
+    </div>
+</main>
+{% include "footer_lading.html" %}
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Nossa História | Pode Aprender{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'landing_page/css/nossa_historia.css' %}">{% endblock %}
+
+{% block body %}
+{% include "navbar_lading.html" with active_page="historia" %}
+<main class="history-page">
+    <div class="history-container">
+        <h1>Nossa História</h1>
+        <ol class="timeline" aria-label="Escolha um ano da história">
+            <li><button type="button" data-index="0"><i></i><span>2010</span></button></li>
+            <li class="active"><button type="button" data-index="1" aria-current="step"><i></i><span>2015</span></button></li>
+            <li><button type="button" data-index="2"><i></i><span>2017</span></button></li>
+            <li><button type="button" data-index="3"><i></i><span>2019</span></button></li>
+            <li><button type="button" data-index="4"><i></i><span>2025</span></button></li>
+        </ol>
+
+        <section class="history-carousel" aria-roledescription="carrossel" aria-label="Nossa trajetória">
+            <button class="history-arrow history-prev" type="button" aria-label="Ver ano anterior"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="history-story" aria-live="polite" aria-labelledby="story-title">
+            <figure class="history-photo photo-one"><img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=700&q=85" alt="Jovens reunidos em uma atividade comunitária"></figure>
+            <figure class="history-photo photo-two"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=85" alt="Grupo de jovens celebrando juntos"></figure>
+            <div class="history-copy">
+                <span class="story-year">2015</span>
+                <h2 id="story-title">Onde tudo começou</h2>
+                <p>A Pode Aprender nasceu do desejo de aproximar jovens da educação e da tecnologia. Em 2015, os primeiros encontros reuniram pessoas dispostas a compartilhar conhecimento e criar novas oportunidades dentro da comunidade.</p>
+                <p>O que começou pequeno cresceu com a força de alunos, voluntários e parceiros. Desde então, seguimos construindo caminhos para que cada pessoa possa aprender, desenvolver seus talentos e transformar o próprio futuro.</p>
+            </div>
+            <figure class="history-photo photo-three"><img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=700&q=85" alt="Alunos participando de uma aula de tecnologia"></figure>
+            <figure class="history-photo photo-four"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=700&q=85" alt="Estudantes trabalhando juntos em uma mesa"></figure>
+            </div>
+            <button class="history-arrow history-next" type="button" aria-label="Ver próximo ano"><i class="fa-solid fa-chevron-right"></i></button>
+        </section>
+    </div>
+</main>
+{% include "footer_lading.html" %}
+<script src="{% static 'landing_page/js/nossa_historia.js' %}"></script>
+{% endblock %}

@@ -38,7 +38,10 @@
 .about-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 24px;
+    max-width: 900px;
+    margin-right: auto;
+    margin-left: auto;
 }
 .courses-grid {
     display: grid;
@@ -102,4 +105,8 @@
     .courses-grid, .about-grid {
         grid-template-columns: 1fr;
     }
+}
+
+.about-card {
+    height: 100%;
 }
