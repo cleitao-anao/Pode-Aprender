@@ -1,17 +1,18 @@
 {% load static %}
 <link href="{% static 'css/nav_bar_lading.css' %}" rel="stylesheet">
 
-<div class="container header-content">
-    {% include "components/logos/logo.html" %}
+<header class="header">
+    <div class="container header-content">
+        {% include "components/logos/logo.html" %}
 
-    <nav class="nav-links">
-        <a href="#">Quem Somos</a>
-        <a href="#">Cursos</a>
-        <a href="#">Histórias</a>
-        <a href="#">FAQ</a>
-    </nav>
-    <div class="auth-buttons">
-      
-        <a href="{% url 'portal_aluno:login' %}" class="btn btn-primary">Portal do Aluno</a>
+        <nav class="nav-links" aria-label="Navegação principal">
+            <a href="{% url 'pode_aprender' %}#quem-somos">Quem Somos</a>
+            <a href="{% url 'cursos' %}"{% if active_page == 'cursos' %} class="active" aria-current="page"{% endif %}>Cursos</a>
+            <a href="{% url 'nossa_historia' %}"{% if active_page == 'historia' %} class="active" aria-current="page"{% endif %}>Nossa História</a>
+            <a href="{% url 'nossa_equipe' %}"{% if active_page == 'equipe' %} class="active" aria-current="page"{% endif %}>Nossa Equipe</a>
+        </nav>
+        <div class="auth-buttons">
+            <a href="{% url 'portal_aluno:login' %}" class="btn btn-primary">Portal do Aluno</a>
+        </div>
     </div>
-</div>
+</header>
