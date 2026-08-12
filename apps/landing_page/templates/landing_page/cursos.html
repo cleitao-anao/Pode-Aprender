@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Cursos | Pode Aprender{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'landing_page/css/cursos.css' %}">{% endblock %}
+
+{% block body %}
+{% include "navbar_lading.html" with active_page="cursos" %}
+<main class="courses-page">
+    <div class="container">
+        <h1 class="sr-only">Cursos</h1>
+        <section class="course-filters" aria-label="Filtros dos cursos">
+            <label>Tipos de áreas
+                <select id="category-filter">
+                    <option value="all">Todos</option>
+                    <option value="design">Design</option>
+                    <option value="dados">Dados</option>
+                    <option value="programacao">Programação</option>
+                </select>
+            </label>
+            <label>Ordenar por
+                <select id="sort-courses">
+                    <option value="default">Data de início</option>
+                    <option value="title">Nome do curso</option>
+                    <option value="hours-asc">Menor duração</option>
+                    <option value="hours-desc">Maior duração</option>
+                </select>
+            </label>
+            <label class="search-label">Buscar
+                <span class="search-field"><i class="fa-solid fa-magnifying-glass"></i><input id="course-search" type="search" placeholder="Digite um curso" autocomplete="off"></span>
+            </label>
+        </section>
+
+        <section class="catalog-grid" id="course-grid" aria-live="polite">
+            {% for course in courses %}
+            <article class="catalog-card" data-category="{{ course.category }}" data-title="{{ course.title|lower }}" data-hours="{{ course.hours }}" data-order="{{ forloop.counter }}">
+                <div class="catalog-cover theme-{{ course.theme }}">
+                    <span>{{ course.level }}</span>
+                    <i class="{{ course.icon }}"></i>
+                </div>
+                <div class="catalog-content">
+                    <h2>{{ course.title }}</h2>
+                    <p>{{ course.description }}</p>
+                    <div class="catalog-meta">
+                        <span><i class="fa-regular fa-clock"></i> {{ course.hours }}h</span>
+                        <span><i class="fa-solid fa-users"></i> {{ course.vacancies }} vagas</span>
+                    </div>
+                    <a href="#" aria-label="Saiba mais sobre {{ course.title }}">Saiba Mais</a>
+                </div>
+            </article>
+            {% endfor %}
+        </section>
+        <p class="empty-courses" hidden>Nenhum curso encontrado.</p>
+    </div>
+</main>
+{% include "footer_lading.html" %}
+<script src="{% static 'landing_page/js/cursos.js' %}"></script>
+{% endblock %}
