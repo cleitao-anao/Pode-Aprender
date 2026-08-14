@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 from django.core.cache import cache
+=======
+from datetime import timedelta
+
+from django.http import JsonResponse
+>>>>>>> c936518 (teste de segurança igor)
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views.decorators.cache import never_cache
 from django.views.decorators.http import require_http_methods
 
@@ -32,6 +39,16 @@ def register_failed_attempt(ip):
 def clear_failed_attempts(ip):
     cache.delete(_attempts_cache_key(ip))
 
+from .services import (
+    GENERIC_LOGIN_ERROR,
+    authenticate_user,
+    get_client_ip,
+    increment_login_attempt,
+    is_rate_limited,
+    parse_login_payload,
+    validate_login_input,
+)
+
 
 def get_profile(request):
     profile = request.session.get('profile')
@@ -47,6 +64,11 @@ def get_profile(request):
     return profile
 
 
+def _is_json_request(request):
+    content_type = request.content_type or ''
+    return content_type.startswith('application/json')
+
+
 @never_cache
 @require_http_methods(['GET', 'POST'])
 def login(request):
@@ -54,6 +76,7 @@ def login(request):
         return redirect('portal_aluno:painel')
 
     error_message = ''
+<<<<<<< HEAD
     ip = get_client_ip(request)
 
     if request.method == 'POST':
@@ -80,6 +103,37 @@ def login(request):
             }, status=429)
 
         error_message = 'E-mail ou senha incorretos. Tente novamente.'
+=======
+    is_json = _is_json_request(request)
+
+    if request.method == 'POST':
+        try:
+            email, password = parse_login_payload(request)
+            email, password = validate_login_input(email, password)
+        except ValueError:
+            if is_json:
+                return JsonResponse({'success': False, 'error': GENERIC_LOGIN_ERROR}, status=401)
+            error_message = GENERIC_LOGIN_ERROR
+        else:
+            client_ip = get_client_ip(request)
+            if is_rate_limited(client_ip):
+                if is_json:
+                    return JsonResponse({'success': False, 'error': GENERIC_LOGIN_ERROR}, status=429)
+                error_message = GENERIC_LOGIN_ERROR
+            else:
+                user = authenticate_user(email, password)
+                if user:
+                    request.session['portal_aluno_logged_in'] = True
+                    request.session.set_expiry(30 * 60)
+                    get_profile(request)
+                    if is_json:
+                        return JsonResponse({'success': True, 'redirect': reverse('portal_aluno:painel')})
+                    return redirect('portal_aluno:painel')
+                increment_login_attempt(client_ip)
+                if is_json:
+                    return JsonResponse({'success': False, 'error': GENERIC_LOGIN_ERROR}, status=401)
+                error_message = GENERIC_LOGIN_ERROR
+>>>>>>> c936518 (teste de segurança igor)
 
     return render(request, 'portal_aluno/login/login_aluno.html', {
         'error_message': error_message,

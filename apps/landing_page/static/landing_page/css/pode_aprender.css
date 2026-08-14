@@ -16,7 +16,8 @@
 }
 
 .btn-primary:hover {
-    background-color: var(--primary-blue-dark);
+    /* Não altera a cor base do botão ao passar o mouse (permanece azul) */
+    background-color: var(--primary-blue);
 }
 
 .btn-outline {
@@ -137,8 +138,57 @@
     letter-spacing: -0.5px;
 }
 
+/* Suas alterações */
 .hero-text-box h1 .highlight {
     font-style: italic;
+    color: var(--primary-blue);
+    font-weight: 500;
+}
+
+/* Alterações do Julio */
+.hero-arrow:hover {
+    background-color: rgba(255, 255, 255, 0.45);
+}
+
+/* Seta dentro do controle do carrossel: por padrão amarela, ao hover branca */
+.hero-arrow i,
+.hero-arrow .fa-chevron-left,
+.hero-arrow .fa-chevron-right {
+    color: var(--yellow);
+}
+
+.hero-arrow:hover i,
+.hero-arrow:hover .fa-chevron-left,
+.hero-arrow:hover .fa-chevron-right {
+    color: var(--white);
+}
+
+.hero-arrow-prev {
+    left: 20px;
+}
+
+.hero-arrow-next {
+    right: 20px;
+}
+
+@media (max-width: 768px) {
+    .hero-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 13px;
+    }
+}
+
+.hero-content {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.hero-content h1 {
+    font-size: 32px;
     color: var(--primary-blue);
     font-weight: 500;
 }
