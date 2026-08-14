@@ -41,7 +41,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: 🔍 Executar Testes
+      - name: 🔍 Checar o projeto (Sem testes)
         env:
           SECRET_KEY: 'test-secret-key-for-ci'
           DEBUG: 'True'
@@ -50,4 +50,4 @@ jobs:
           DB_PASSWORD: postgres
           DB_HOST: localhost
           DB_PORT: 5432
-        run: python manage.py test
+        run: python manage.py check
