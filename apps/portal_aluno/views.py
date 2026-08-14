@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 from django.core.cache import cache
-=======
 from datetime import timedelta
-
 from django.http import JsonResponse
->>>>>>> c936518 (teste de segurança igor)
+
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.decorators.cache import never_cache
@@ -76,34 +73,7 @@ def login(request):
         return redirect('portal_aluno:painel')
 
     error_message = ''
-<<<<<<< HEAD
-    ip = get_client_ip(request)
 
-    if request.method == 'POST':
-        if is_ip_locked_out(ip):
-            error_message = 'Muitas tentativas de login. Tente novamente mais tarde.'
-            return render(request, 'portal_aluno/login/login_aluno.html', {
-                'error_message': error_message,
-            }, status=429)
-
-        email = request.POST.get('email', '').strip()
-        password = request.POST.get('password', '')
-
-        if email == 'aluno@podecrer.com' and password == '123456':
-            clear_failed_attempts(ip)
-            request.session['portal_aluno_logged_in'] = True
-            get_profile(request)
-            return redirect('portal_aluno:painel')
-
-        attempts = register_failed_attempt(ip)
-        if attempts >= MAX_LOGIN_ATTEMPTS:
-            error_message = 'Muitas tentativas de login. Tente novamente mais tarde.'
-            return render(request, 'portal_aluno/login/login_aluno.html', {
-                'error_message': error_message,
-            }, status=429)
-
-        error_message = 'E-mail ou senha incorretos. Tente novamente.'
-=======
     is_json = _is_json_request(request)
 
     if request.method == 'POST':
@@ -133,8 +103,7 @@ def login(request):
                 if is_json:
                     return JsonResponse({'success': False, 'error': GENERIC_LOGIN_ERROR}, status=401)
                 error_message = GENERIC_LOGIN_ERROR
->>>>>>> c936518 (teste de segurança igor)
-
+                
     return render(request, 'portal_aluno/login/login_aluno.html', {
         'error_message': error_message,
     })

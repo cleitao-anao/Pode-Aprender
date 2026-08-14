@@ -1,0 +1,25 @@
+name: Ouvidoria 360 - CI (Integração Contínua)
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main", "develop" ]
+
+jobs:
+  Projeto:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Clonar o código do repositório
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Configurar Node.js 
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 📦 Instalar dependências do backend
+        run: npm install --prefix backend
+
+      - name: 🔍 Rodar o Linter do backend
+        run: npm --prefix backend run lint
