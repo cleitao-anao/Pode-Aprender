@@ -33,21 +33,9 @@
 
         <section class="catalog-grid" id="course-grid" aria-live="polite">
             {% for course in courses %}
-            <article class="catalog-card" data-category="{{ course.category }}" data-title="{{ course.title|lower }}" data-hours="{{ course.hours }}" data-order="{{ forloop.counter }}">
-                <div class="catalog-cover theme-{{ course.theme }}">
-                    <span>{{ course.level }}</span>
-                    <i class="{{ course.icon }}"></i>
-                </div>
-                <div class="catalog-content">
-                    <h2>{{ course.title }}</h2>
-                    <p>{{ course.description }}</p>
-                    <div class="catalog-meta">
-                        <span><i class="fa-regular fa-clock"></i> {{ course.hours }}h</span>
-                        <span><i class="fa-solid fa-users"></i> {{ course.vacancies }} vagas</span>
-                    </div>
-                    <a href="#" aria-label="Saiba mais sobre {{ course.title }}">Saiba Mais</a>
-                </div>
-            </article>
+            <div class="catalog-card" data-category="{{ course.category }}" data-title="{{ course.title|lower }}" data-hours="{{ course.hours }}" data-order="{{ forloop.counter }}">
+                {% include "components/cards/card_curso.html" with cor=course.theme|add:"-bg" icone=course.icon carga_horaria=course.hours|stringformat:"s"|add:"h" nivel=course.level titulo=course.title descricao=course.description vagas=course.vacancies %}
+            </div>
             {% endfor %}
         </section>
         <p class="empty-courses" hidden>Nenhum curso encontrado.</p>

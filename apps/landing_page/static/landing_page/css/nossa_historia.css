@@ -3,6 +3,7 @@
     overflow: hidden;
     background: #f3f3ff;
     padding: 10px 0 70px;
+    margin: 60px 0 0 0;
 }
 
 .history-container { width: min(100% - 40px, 980px); margin: 0 auto; }

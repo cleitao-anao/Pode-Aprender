@@ -15,7 +15,7 @@
 
 {% include "navbar_lading.html" %}
 
-    <section class="hero">
+    <section class="hero mt-6">
         <!-- Contêiner de Imagens (Carrossel) -->
         <div class="hero-image-container">
             <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
@@ -75,7 +75,7 @@
             </div>
         </div>
 
-        <div class="carousel-wrapper">
+        <div class="carousel-wrapper ">
             <button class="nav-btn prev" id="btn-prev" aria-label="Voltar">&#10094;</button>
 
             <div class="carousel-track" id="track">
@@ -94,7 +94,7 @@
             <button class="nav-btn next" id="btn-next" aria-label="Avançar">&#10095;</button>
         </div>
         <div class="flex justify-center items-start gap-2">
-            <a class="font-bold text-blue-600 flex justify-center items-center flex-row gap-1" href="/">Ver todos<i class="fa-solid fa-arrow-right"></i></a> <!-- ! colocar pra onde ir-->
+            <a class="font-bold text-blue-600 flex justify-center items-center flex-row gap-1" href="{% url 'cursos'%}">Ver todos<i class="fa-solid fa-arrow-right"></i></a> <!-- ! colocar pra onde ir-->
             
         </div>
     </section>

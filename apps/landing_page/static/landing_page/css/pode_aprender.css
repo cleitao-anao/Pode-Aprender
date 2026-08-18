@@ -255,7 +255,8 @@
 
 @media (max-width: 768px) {
     .hero {
-        padding: 80px 5% 30px 5%;
+        padding: 50px 5% 30px 5%;
+        gap: 10px;
     }
     
     .hero-text-box {
@@ -450,6 +451,11 @@
     align-items: center;
 }
 
+.carousel-track .course-card {
+    position: absolute;
+    max-width: 350px;
+}
+
 .carousel-track.dragging {
     cursor: grabbing;
 }
@@ -496,6 +502,10 @@
 
     .nav-btn.next {
         right: 5px;
+    }
+    
+    .carousel-track .course-card {
+        max-width: 240px;
     }
 
 }
