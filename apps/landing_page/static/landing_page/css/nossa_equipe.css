@@ -1,0 +1,217 @@
+/* ===== Team Page — Full Viewport, No Vertical Scroll ===== */
+.team-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 5% 90%, #E6E3FB 0%, transparent 40%),
+        radial-gradient(circle at 95% 10%, #C4CDFF 0%, transparent 35%),
+        #f3f3ff;
+    z-index: 0;
+    padding-top: 70px;
+}
+
+/* ===== Horizontal Track ===== */
+.team-track {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: 100%;
+    padding: 0 60px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    cursor: grab;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.team-track::-webkit-scrollbar {
+    display: none;
+}
+
+.team-track.dragging {
+    cursor: grabbing;
+    scroll-behavior: auto;
+}
+
+/* ===== Title Slides ===== */
+.team-title-slide {
+    flex: 0 0 auto;
+    width: clamp(300px, 42vw, 600px);
+    min-width: min-content;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.team-title-slide h1 {
+    color: var(--primary-blue);
+    font-family: var(--font-primary);
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    margin-bottom: 16px;
+}
+
+.team-title-slide p {
+    color: #6b7280;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.6;
+    max-width: 400px;
+}
+
+.scroll-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 32px;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    animation: pulseRight 2s ease-in-out infinite;
+}
+
+@keyframes pulseRight {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(8px); }
+}
+
+/* ===== Team Cards ===== */
+.team-card {
+    flex: 0 0 auto;
+    width: clamp(220px, 22vw, 300px);
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(24, 43, 104, 0.1);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    user-select: none;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 22px 44px rgba(24, 43, 104, 0.18);
+}
+
+.team-card-img {
+    width: 100%;
+    height: clamp(250px, 30vh, 340px);
+    overflow: hidden;
+}
+
+.team-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    filter: saturate(0.9);
+    pointer-events: none;
+}
+
+.team-card:hover .team-card-img img {
+    transform: scale(1.06);
+    filter: saturate(1);
+}
+
+.team-card-info {
+    padding: 18px 20px 22px;
+    text-align: center;
+}
+
+.team-card-info h3 {
+    font-family: var(--font-primary);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-bottom: 4px;
+}
+
+.team-card-info span {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--primary-blue);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+/* Repulsion zone – invisible elastic barrier between sections */
+.repulsion-zone {
+    flex: 0 0 1000px; /* large gap for strong elastic barrier */
+    width: 500px;
+    height: 100%;
+    pointer-events: none;
+    /* subtle gradient to hint at the separation */
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(200,200,255,0.12) 50%, rgba(255,255,255,0) 100%);
+}
+
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .team-page {
+        padding-top: 60px;
+    }
+
+    .team-track {
+        gap: 20px;
+        padding: 0 24px;
+    }
+
+    .team-title-slide {
+        width: clamp(240px, 75vw, 320px);
+        padding: 20px 10px 20px 0;
+    }
+
+    .team-title-slide h1 {
+        font-size: 2.4rem;
+    }
+
+    .team-card {
+        width: clamp(190px, 55vw, 240px);
+    }
+
+    .team-card-img {
+        height: clamp(200px, 28vh, 280px);
+    }
+
+    .team-card-info {
+        padding: 14px 14px 18px;
+    }
+
+    .team-card-info h3 {
+        font-size: 1rem;
+    }
+
+    .team-card-info span {
+        font-size: 0.78rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-track {
+        gap: 16px;
+        padding: 0 16px;
+    }
+
+    .team-title-slide {
+        width: 260px;
+    }
+
+    .team-title-slide h1 {
+        font-size: 2rem;
+    }
+
+    .team-card {
+        width: 180px;
+    }
+
+    .team-card-img {
+        height: 200px;
+    }
+}

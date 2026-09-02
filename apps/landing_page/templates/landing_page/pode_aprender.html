@@ -15,8 +15,9 @@
 
 {% include "navbar_lading.html" %}
 
-    <section class="hero">
-        <div class="hero-bg-slides">
+    <section class="hero mt-6">
+        <!-- Contêiner de Imagens (Carrossel) -->
+        <div class="hero-image-container">
             <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
             <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
             <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
@@ -24,91 +25,81 @@
             <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
             <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
         </div>
-        <div class="hero-overlay"></div>
-        <button class="hero-arrow hero-arrow-prev" aria-label="Slide anterior">
-            <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        <button class="hero-arrow hero-arrow-next" aria-label="Próximo slide">
-            <i class="fa-solid fa-chevron-right"></i>
-        </button>
-        <div class="container hero-container">
-            <div class="carousel-indicators">
-                <span class="active" data-slide="0"></span>
-                <span data-slide="1"></span>
-                <span data-slide="2"></span>
-                <span data-slide="3"></span>
-                <span data-slide="4"></span>
-                <span data-slide="5"></span>
-            </div>
+
+        <!-- Box de Texto sobreposto -->
+        <div class="hero-text-box">
+            <h1>Informática de graça, pra quem <span class="highlight">pode crer</span> que vai chegar longe.</h1>
+            <p>Cursos completos de informática básica, intermediária e áreas de tecnologia, feitos por voluntários que já passaram pelo mesmo caminho que você.</p>
         </div>
+
+        <!-- Indicadores -->
+        <div class="carousel-indicators">
+            <span class="active" data-slide="0"></span>
+            <span data-slide="1"></span>
+            <span data-slide="2"></span>
+            <span data-slide="3"></span>
+            <span data-slide="4"></span>
+            <span data-slide="5"></span>
+        </div>
+
     </section>
 
-    <section class="stats">
-        <div class="container stats-grid">
-            <div class="stat-item">
-                <h3>+200</h3>
-                <p>ALUNOS IMPACTADOS</p>
+    {% include "components/outros/quebra_pagina.html" %}
+    <section class="about">
+        
+        <div class="about-content">
+            <div class="about-image left">
+                <img src="https://placehold.co/300x300/a3a3a3/ffffff?text=PLACE+HOLDER" alt="Placeholder">
             </div>
-            <div class="stat-item">
-                <h3 class="yellow">+10</h3>
-                <p>CURSOS OFERECIDOS</p>
+            
+            <div class="section-header">
+                <h2>Quem Somos</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam finibus malesuada nulla non dapibus. Nam dignissim at metus eleifend porttitor. Curabitur cursus consectetur lectus. Quisque laoreet, elit eget maximus blandit, ipsum magna tristique diam, in viverra quam dui viverra dolor. Curabitur iaculis, erat id pellentesque efficitur, sem mi ullamcorper risus, in tempor urna lacus sit amet diam. Praesent vestibulum lectus a tincidunt dapibus. Vivamus non elit quis neque elementum facilisis sed sit amet arcu.</p>
             </div>
-            <div class="stat-item">
-                <h3 class="blue">+20</h3>
-                <p>VOLUNTÁRIOS ATIVOS</p>
-            </div>
-            <div class="stat-item">
-                <h3 class="yellow">100%</h3>
-                <p>GRATUITO</p>
+            
+            <div class="about-image right">
+                <img src="https://placehold.co/300x300/a3a3a3/ffffff?text=PLACE+HOLDER" alt="Placeholder">
             </div>
         </div>
+        
     </section>
-
-    <section class="courses">
+    {% include "components/outros/quebra_pagina.html" %}
+    
+    <section class="courses" id="cursos">
         <div class="container">
             <div class="section-header">
-                <div>
+    
                     <h2>Cursos Disponíveis</h2>
                     <p>Formações práticas desenhadas para o mercado atual.</p>
-                </div>
-                <a href="#" class="view-all">Ver todos <i class="fa-solid fa-arrow-right"></i></a>
+  
             </div>
-
-           <div class="courses-grid">
-            
-            {% include "components/cards/card_curso.html" with cor='blue-bg' icone='fa-solid fa-terminal' carga_horaria='40h' nivel='Iniciante' titulo='Introdução à Programação' descricao='Lógica de programação, algoritmos e os primeiros passos no mundo do código...' horas='40h' vagas='25' %}
-
-            {% include "components/cards/card_curso.html" with cor='yellow-bg' icone='fa-solid fa-pen-nib' carga_horaria='80h' nivel='Intermediário' titulo='Design de Interfaces (UI/UX)' descricao='Aprenda a criar interfaces modernas e funcionais utilizando Figma e princípios de...' horas='80h' vagas='20' %}
-
-            {% include "components/cards/card_curso.html" with cor='blue-bg' icone='fa-solid fa-desktop' carga_horaria='100h' nivel='Avançado' titulo='Desenvolvimento Web Front-end' descricao='Construa sites responsivos e interativos com HTML, CSS, JavaScript e React básico.' horas='100h' vagas='20' %}
-
-           </div>     
-    
         </div>
-    </section>
 
-    <section class="about">
-        <div class="container">
-            <div class="section-header center">
-                <h2>Quem Somos</h2>
-                <p>A Comunidade Pode Crer é um movimento focado em inclusão social e capacitação tecnológica, conectando talentos periféricos às oportunidades da economia digital.</p>
-            </div>
+        <div class="carousel-wrapper ">
+            <button class="nav-btn prev" id="btn-prev" aria-label="Voltar">&#10094;</button>
 
-            <div class="about-grid">
+            <div class="carousel-track" id="track">
+                
+                {% include "components/cards/card_curso.html" with cor='blue-bg' icone='fa-solid fa-terminal' carga_horaria='40h' nivel='Iniciante' titulo='Introdução à Programação' descricao='Lógica de programação, algoritmos e os primeiros passos no mundo do código...' horas='40h' vagas='25' %}
 
-                {% include "components/cards/card_about.html" with cor='blue-bg' icone='fa-regular fa-flag' titulo='Missão' descricao='Democratizar o acesso ao ensino de tecnologia, promovendo a autonomia financeira e intelectual das comunidades.' %}
+                {% include "components/cards/card_curso.html" with cor='yellow-bg' icone='fa-solid fa-pen-nib' carga_horaria='80h' nivel='Intermediário' titulo='Design de Interfaces (UI/UX)' descricao='Aprenda a criar interfaces modernas e funcionais utilizando Figma e princípios de...' horas='80h' vagas='20' %}
+
+                {% include "components/cards/card_curso.html" with cor='blue-bg' icone='fa-solid fa-desktop' carga_horaria='100h' nivel='Avançado' titulo='Desenvolvimento Web Front-end' descricao='Construa sites responsivos e interativos com HTML, CSS, JavaScript e React básico.' horas='100h' vagas='20' %}
                 
+                {% include "components/cards/card_curso.html" with cor='blue-bg' icone='fa-solid fa-desktop' carga_horaria='100h' nivel='Avançado' titulo='Desenvolvimento Web Front-end' descricao='Construa sites responsivos e interativos com HTML, CSS, JavaScript e React básico.' horas='100h' vagas='20' %}
                 
-                {% include "components/cards/card_about.html" with cor='yellow-bg' icone='fa-regular fa-eye' titulo='Visão' descricao='Ser referência nacional na formação de talentos tecnológicos oriundos de áreas de vulnerabilidade social.' %}
-                
-                {% include "components/cards/card_about.html" with cor='red-bg' icone='fa-regular fa-heart' titulo='Valores' descricao='Inclusão, excelência técnica, colaboração em rede, empatia e protagonismo comunitário.' %}
-                
+                {% include "components/cards/card_curso.html" with cor='blue-bg' icone='fa-solid fa-desktop' carga_horaria='100h' nivel='Avançado' titulo='Desenvolvimento Web Front-end' descricao='Construa sites responsivos e interativos com HTML, CSS, JavaScript e React básico.' horas='100h' vagas='20' %}
           
-
-                
-            </div>
+            </div>     
+            <button class="nav-btn next" id="btn-next" aria-label="Avançar">&#10095;</button>
+        </div>
+        <div class="flex justify-center items-start gap-2">
+            <a class="font-bold text-blue-600 flex justify-center items-center flex-row gap-1" href="{% url 'cursos'%}">Ver todos<i class="fa-solid fa-arrow-right"></i></a> <!-- ! colocar pra onde ir-->
+            
         </div>
     </section>
+
+
 
     {% include "footer_lading.html" %}
 

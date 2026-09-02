@@ -1,11 +1,18 @@
 {% load static %}
 
 <style>
+    .blue-bg { background-color: var(--card-blue); color: #274065; }
+    .purple-bg { background-color: var(--card-purple); color: #A692C8; }
+    .pink-bg { background-color: var(--card-pink); color: #652749; }
+
     .course-card {
+        height: 450px;
         width: 100%;
-        max-width: 350px;
+        max-width: 100%;
+        margin: 0 auto;
         background-color: #ffffff;
-        border-radius: 24px; /* rounded-3xl */
+        border-radius: 24px;
+        /* rounded-3xl */
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         border: 1px solid #f3f4f6;
         overflow: hidden;
@@ -15,6 +22,24 @@
         cursor: pointer;
     }
 
+    @media (max-width: 768px) {
+        .course-card {
+            height: 420px;
+        }
+        .card-header {
+            height: 140px !important;
+        }
+        .card-body {
+            padding: 16px;
+        }
+        .card-title {
+            font-size: 18px;
+        }
+        .card-description {
+            font-size: 13px;
+        }
+    }
+
     /* Efeito Hover do Card Inteiro */
     .course-card:hover {
         transform: translateY(-5px);
@@ -22,7 +47,8 @@
     }
 
     .card-header {
-        height: 160px; /* h-40 */
+        height: 160px;
+        /* h-40 */
         position: relative;
         display: flex;
         align-items: center;
@@ -31,16 +57,31 @@
     }
 
     /* Variações de cor de fundo */
-    .bg-pink { background-color: #fce7f3; } /* pink-100 */
-    .bg-purple { background-color: #e9d5ff; } /* purple-200 */
-    .bg-blue { background-color: #bfdbfe; } /* blue-200 */
+    .bg-pink {
+        background-color: #fce7f3;
+    }
+
+    /* pink-100 */
+    .bg-purple {
+        background-color: #e9d5ff;
+    }
+
+    /* purple-200 */
+    .bg-blue {
+        background-color: #bfdbfe;
+    }
+
+    /* blue-200 */
 
     /* Padrão de listras diagonais */
     .stripes-pattern {
         position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         opacity: 0.1;
-        background-image: repeating-linear-gradient(45deg, #000 0, #000 2px, transparent 2px, transparent 10px);
+        background: repeating-linear-gradient(45deg, #30463c, #7a9b8d 20px, #738b84 20px, #86a79c 40px);
     }
 
     .card-badge {
@@ -52,25 +93,29 @@
         font-size: 12px;
         font-weight: 700;
         padding: 4px 12px;
-        border-radius: 9999px; /* rounded-full */
+        border-radius: 9999px;
+        /* rounded-full */
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
         z-index: 10;
     }
 
+
+
     .card-icon {
-        font-size: 48px; /* text-5xl */
-        z-index: 10;
-        transition: transform 0.3s ease;
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        margin-bottom: 20px;
     }
-    
-    /* Cores dos ícones */
-    .icon-pink { color: #f472b6; } /* pink-400 */
-    .icon-purple { color: #a855f7; } /* purple-500 */
-    
+
+
+    /* purple-500 */
+
     /* Animação do ícone ao passar o mouse no card */
-    .course-card:hover .card-icon {
-        transform: scale(1.1);
-    }
 
     .card-body {
         padding: 24px;
@@ -82,12 +127,14 @@
     .card-title {
         font-size: 20px;
         font-weight: 700;
-        color: #1f2937; /* gray-800 */
+        color: #1f2937;
+        /* gray-800 */
         margin: 0 0 8px 0;
     }
 
     .card-description {
-        color: #6b7280; /* gray-500 */
+        color: #6b7280;
+        /* gray-500 */
         font-size: 14px;
         line-height: 1.5;
         margin: 0 0 16px 0;
@@ -98,7 +145,8 @@
         display: flex;
         align-items: center;
         font-size: 12px;
-        color: #9ca3af; /* gray-400 */
+        color: #9ca3af;
+        /* gray-400 */
         font-weight: 500;
         margin-bottom: 16px;
     }
@@ -114,12 +162,15 @@
     .card-button {
         width: 100%;
         padding: 12px 0;
-        background-color: #eff6ff; /* blue-50 */
-        color: #1E3A8A; /* primary color */
+        background-color: #eff6ff;
+        /* blue-50 */
+        color: #1E3A8A;
+        /* primary color */
         font-weight: 600;
         font-size: 16px;
         border: none;
-        border-radius: 12px; /* rounded-xl */
+        border-radius: 12px;
+        /* rounded-xl */
         cursor: pointer;
         transition: background-color 0.2s, color 0.2s;
         font-family: inherit;
@@ -128,6 +179,30 @@
     .card-button:hover {
         background-color: #1E3A8A;
         color: #ffffff;
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 40px;
+    }
+
+    .section-header.center {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 40px auto;
+    }
+
+    .section-header h2 {
+        font-size: 28px;
+        margin-bottom: 8px;
+    }
+
+    .section-header p {
+        color: var(--text-gray);
     }
 </style>
 
@@ -144,20 +219,45 @@
         <span class="card-badge">{{ nivel }}</span>
         <i class="fa-solid {{ icone }} card-icon {{ cor }}"></i>
     </div>
-    
+
 
 
     <div class="card-body">
         <h3 class="card-title">{{ titulo }}</h3>
         <p class="card-description">{{ descricao }}</p>
-        
+
         <div class="card-meta">
             <i class="fa-regular fa-clock"></i> {{ carga_horaria }}
             <span class="dot">•</span>
             <i class="fa-solid fa-users"></i> {{ vagas }}
         </div>
-        
+
         <button class="card-button">Saiba Mais</button>
     </div>
 </div>
 
+<script>
+(function() {
+    const cores = ['blue-bg', 'purple-bg', 'pink-bg'];
+    // Pega todos os card-headers que ainda não foram randomizados
+    document.querySelectorAll('.card-header[data-cor-rand]').forEach(function(header) {
+        // Já processado, pula
+    });
+    // Marca e randomiza todos os card-headers sem marcação
+    document.querySelectorAll('.card-header:not([data-cor-rand])').forEach(function(header) {
+        const corAleatoria = cores[Math.floor(Math.random() * cores.length)];
+        // Remove qualquer cor existente
+        cores.forEach(function(c) { header.classList.remove(c); });
+        // Adiciona a cor aleatória
+        header.classList.add(corAleatoria);
+        // Também atualiza o ícone dentro do header
+        const icone = header.querySelector('.card-icon');
+        if (icone) {
+            cores.forEach(function(c) { icone.classList.remove(c); });
+            icone.classList.add(corAleatoria);
+        }
+        // Marca como processado
+        header.setAttribute('data-cor-rand', 'true');
+    });
+})();
+</script>

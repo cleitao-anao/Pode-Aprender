@@ -1,0 +1,383 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Nossa Equipe | Pode Aprender{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'landing_page/css/nossa_equipe.css' %}">{% endblock %}
+
+{% block extra_head %}
+<style>
+    html, body {
+        overflow: hidden !important;
+        height: 100vh !important;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+{% include "navbar_lading.html" with active_page="equipe" %}
+
+<main class="team-page" id="team-page">
+    <div class="team-track" id="team-track">
+
+        <!-- Título Escola -->
+        <div class="team-title-slide">
+            <h1>Nossa Equipe</h1>
+            <p>Conheça as pessoas que fazem o<br>Pode Aprender acontecer.</p>
+            <span class="scroll-hint"><i class="fa-solid fa-arrow-right"></i> Role para navegar</span>
+        </div>
+
+        <!-- Cards Escola -->
+        <div class="team-card">
+            <div class="team-card-img">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=85" alt="João Silva">
+            </div>
+            <div class="team-card-info">
+                <h3>João Silva</h3>
+                <span>Coordenador</span>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <div class="team-card-img">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=700&q=85" alt="Maria Oliveira">
+            </div>
+            <div class="team-card-info">
+                <h3>Maria Oliveira</h3>
+                <span>Professora</span>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <div class="team-card-img">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=85" alt="Carlos Santos">
+            </div>
+            <div class="team-card-info">
+                <h3>Carlos Santos</h3>
+                <span>Professor</span>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <div class="team-card-img">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=85" alt="Ana Costa">
+            </div>
+            <div class="team-card-info">
+                <h3>Ana Costa</h3>
+                <span>Monitora</span>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <div class="team-card-img">
+                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=700&q=85" alt="Pedro Lima">
+            </div>
+            <div class="team-card-info">
+                <h3>Pedro Lima</h3>
+                <span>Professor</span>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <div class="team-card-img">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=700&q=85" alt="Beatriz Ferreira">
+            </div>
+            <div class="team-card-info">
+                <h3>Beatriz Ferreira</h3>
+                <span>Coordenadora Pedagógica</span>
+            </div>
+        </div>
+
+        <!-- Repulsion zone to trigger bounce into devs section -->
+        <div class="repulsion-zone" data-repulsed="false"></div>
+
+        <!-- Título Desenvolvedores -->
+        <div class="team-title-slide">
+            <h1>Desenvolvedores</h1>
+            <p>O time por trás da tecnologia<br>da plataforma.</p>
+        </div>
+
+        <!-- Cards Desenvolvedores (4 pessoas) -->
+        <div class="team-card">
+            <div class="team-card-img">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&q=85" alt="Lucas Mendes">
+            </div>
+            <div class="team-card-info">
+                <h3>Lucas Mendes</h3>
+                <span>Full Stack Developer</span>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <div class="team-card-img">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=700&q=85" alt="Camila Rocha">
+            </div>
+            <div class="team-card-info">
+                <h3>Camila Rocha</h3>
+                <span>Front-end Developer</span>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <div class="team-card-img">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=700&q=85" alt="Rafael Alves">
+            </div>
+            <div class="team-card-info">
+                <h3>Rafael Alves</h3>
+                <span>Back-end Developer</span>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <div class="team-card-img">
+                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=700&q=85" alt="Fernanda Dias">
+            </div>
+            <div class="team-card-info">
+                <h3>Fernanda Dias</h3>
+                <span>UI/UX Designer</span>
+            </div>
+        </div>
+
+        <!-- Espaço final -->
+        <div class="team-end-spacer"></div>
+    </div>
+</main>
+
+<!-- GSAP for smooth rubber-band physics -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<script>
+(function() {
+    const page  = document.getElementById('team-page');
+    const track = document.getElementById('team-track');
+    const repulsionZone = document.querySelector('.repulsion-zone');
+
+    // ─── Virtual scroll state ───────────────────────────────────────
+    let virtualX   = 0;   // the "desired" scroll position
+    let velocity   = 0;   // current scroll velocity (px/frame)
+    let isBouncing = false; // true while a spring-back animation runs
+    let isBreakingThrough = false; // true while crossing the barrier
+
+    // ─── Section boundary helpers ───────────────────────────────────
+    function getSchoolEnd() {
+        // right edge of the last school card (before repulsion zone)
+        return repulsionZone.offsetLeft - track.clientWidth;
+    }
+    function getDevsStart() {
+        // left edge of the devs title (after repulsion zone)
+        return repulsionZone.offsetLeft + repulsionZone.offsetWidth;
+    }
+    function getMaxScroll() {
+        return track.scrollWidth - track.clientWidth;
+    }
+
+    // Which section owns a given scrollLeft?
+    function sectionFor(x) {
+        const mid = repulsionZone.offsetLeft + repulsionZone.offsetWidth / 2;
+        return x + track.clientWidth / 2 < mid ? 'school' : 'devs';
+    }
+
+    // ─── Elastic rubber-band math ───────────────────────────────────
+    // Returns a dampened overshoot: the further past the edge, the
+    // harder it is to keep pulling (like stretching a rubber band).
+    function rubberBand(overshoot, dimension) {
+        // Classic iOS-style formula: x * d / (d + x)
+        const d = dimension * 0.7; // higher = stretchier, lets you pull more
+        return (overshoot * d) / (d + Math.abs(overshoot));
+    }
+
+    // ─── Apply virtual position with elastic edges ──────────────────
+    function applyScroll() {
+        const maxScroll  = getMaxScroll();
+        const schoolEnd  = getSchoolEnd();
+        const devsStart  = getDevsStart();
+        const section    = sectionFor(virtualX);
+
+        let rendered = virtualX;
+        let edgeShift = 0; // CSS transform for edge overshoot
+
+        // Edge: start of track — use transform (scrollLeft can't go < 0)
+        if (virtualX < 0) {
+            rendered = 0;
+            edgeShift = rubberBand(-virtualX, track.clientWidth);
+        }
+        // Edge: end of track — use transform (scrollLeft can't go > max)
+        else if (virtualX > maxScroll) {
+            rendered = maxScroll;
+            edgeShift = -rubberBand(virtualX - maxScroll, track.clientWidth);
+        }
+        // During breakthrough: render virtualX directly, no barrier dampening
+        else if (isBreakingThrough) {
+            rendered = virtualX;
+        }
+        // Barrier: school → trying to go past school end
+        else if (section === 'school' && virtualX > schoolEnd) {
+            const over = virtualX - schoolEnd;
+            rendered = schoolEnd + rubberBand(over, track.clientWidth);
+        }
+        // Barrier: devs → trying to go before devs start
+        else if (section === 'devs' && virtualX < devsStart) {
+            const over = devsStart - virtualX;
+            rendered = devsStart - rubberBand(over, track.clientWidth);
+        }
+
+        track.scrollLeft = Math.max(0, Math.min(rendered, maxScroll));
+        track.style.transform = edgeShift !== 0
+            ? `translateX(${edgeShift}px)`
+            : '';
+    }
+
+    // ─── Spring-back to nearest valid edge ──────────────────────────
+    function snapBack() {
+        if (isBouncing) return;
+
+        const maxScroll = getMaxScroll();
+        const schoolEnd = getSchoolEnd();
+        const devsStart = getDevsStart();
+        const section   = sectionFor(virtualX);
+
+        let target = virtualX;
+
+        if (virtualX < 0) {
+            target = 0;
+        } else if (virtualX > maxScroll) {
+            target = maxScroll;
+        } else if (section === 'school' && virtualX > schoolEnd) {
+            // Check momentum: if velocity is strong enough, break through!
+            if (velocity > 18) {
+                target = devsStart;
+            } else {
+                target = schoolEnd;
+            }
+        } else if (section === 'devs' && virtualX < devsStart) {
+            if (velocity < -18) {
+                target = schoolEnd;
+            } else {
+                target = devsStart;
+            }
+        } else {
+            return; // no snap needed
+        }
+
+        isBouncing = true;
+        // Crossing sections? Enable breakthrough for smooth glide
+        const isCrossing = (target === devsStart && virtualX < devsStart) ||
+                           (target === schoolEnd && virtualX > schoolEnd);
+        if (isCrossing) isBreakingThrough = true;
+
+        const obj = { x: virtualX };
+        gsap.to(obj, {
+            x: target,
+            duration: isCrossing ? 1.6 : 1.2,
+            ease: isCrossing ? 'power3.inOut' : 'power2.out',
+            onUpdate() {
+                virtualX = obj.x;
+                applyScroll();
+            },
+            onComplete() {
+                virtualX = target;
+                velocity = 0;
+                isBouncing = false;
+                isBreakingThrough = false;
+                track.style.transform = '';
+                applyScroll();
+            }
+        });
+    }
+
+    // ─── Wheel → horizontal with momentum tracking ──────────────────
+    let wheelTimer = null;
+
+    page.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        if (isBouncing) return; // don't fight the spring-back
+
+        const delta = e.deltaY * 1.8;
+        velocity = delta;
+        virtualX += delta;
+        applyScroll();
+
+        // After user stops scrolling, spring back if over an edge
+        clearTimeout(wheelTimer);
+        wheelTimer = setTimeout(() => {
+            snapBack();
+        }, 120);
+    }, { passive: false });
+
+    // ─── Drag (mouse) ───────────────────────────────────────────────
+    let isDown = false, dragStartX, dragVirtualStart, lastDragX, lastDragTime;
+
+    track.addEventListener('mousedown', (e) => {
+        if (isBouncing) gsap.killTweensOf({});
+        isBouncing = false;
+        isDown = true;
+        track.classList.add('dragging');
+        dragStartX = e.pageX;
+        dragVirtualStart = virtualX;
+        lastDragX = e.pageX;
+        lastDragTime = Date.now();
+    });
+
+    window.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const dx = dragStartX - e.pageX;
+        virtualX = dragVirtualStart + dx;
+
+        // Track velocity for fling
+        const now = Date.now();
+        const dt = now - lastDragTime;
+        if (dt > 0) {
+            velocity = ((e.pageX - lastDragX) / dt) * -16; // convert to px/frame-ish
+        }
+        lastDragX = e.pageX;
+        lastDragTime = now;
+
+        applyScroll();
+    });
+
+    function endDrag() {
+        if (!isDown) return;
+        isDown = false;
+        track.classList.remove('dragging');
+        snapBack();
+    }
+    window.addEventListener('mouseup', endDrag);
+    window.addEventListener('mouseleave', endDrag);
+
+    // ─── Touch ──────────────────────────────────────────────────────
+    let touchStartX, touchVirtualStart, lastTouchX, lastTouchTime;
+
+    track.addEventListener('touchstart', (e) => {
+        if (isBouncing) gsap.killTweensOf({});
+        isBouncing = false;
+        touchStartX = e.touches[0].pageX;
+        touchVirtualStart = virtualX;
+        lastTouchX = touchStartX;
+        lastTouchTime = Date.now();
+    }, { passive: true });
+
+    track.addEventListener('touchmove', (e) => {
+        const x = e.touches[0].pageX;
+        const dx = touchStartX - x;
+        virtualX = touchVirtualStart + dx;
+
+        const now = Date.now();
+        const dt = now - lastTouchTime;
+        if (dt > 0) {
+            velocity = ((x - lastTouchX) / dt) * -16;
+        }
+        lastTouchX = x;
+        lastTouchTime = now;
+
+        applyScroll();
+    }, { passive: true });
+
+    track.addEventListener('touchend', () => {
+        snapBack();
+    }, { passive: true });
+
+    // ─── Initialize ─────────────────────────────────────────────────
+    virtualX = track.scrollLeft;
+})();
+</script>
+{% endblock %}

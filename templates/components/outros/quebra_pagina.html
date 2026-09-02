@@ -1,0 +1,19 @@
+{% load static %}
+
+<style>
+    .quebra-pagina {
+        width: 100%;
+        height: 70px;
+        margin: 70px 0 70px 0;
+        
+        /* O background com dois gradientes radiais simula perfeitamente as duas bolinhas
+           repetindo-se no eixo X a cada 65px, igualzinho ao design original, sem usar JS! */
+        background-image:
+            radial-gradient(circle at 32.5px 19px, #162D9D 4px, transparent 4.5px),
+            radial-gradient(circle at 32.5px 51px, #162D9D 4px, transparent 4.5px);
+        background-size: 65px 70px;
+        background-repeat: repeat-x;
+    }
+</style>
+
+<div class="quebra-pagina"></div>
